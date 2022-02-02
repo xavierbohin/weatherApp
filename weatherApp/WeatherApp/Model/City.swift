@@ -7,14 +7,13 @@
 
 import Foundation
 
-struct City : Decodable, Identifiable {
-    var id: Int
+struct City : Decodable {
     let name: String
     let lat: Double
     let lon: Double
     let country: String
 }
 
-struct CityResponse : Decodable {
-    let cities : [City]
+extension City : Identifiable {
+    var id: UUID {return UUID()}
 }

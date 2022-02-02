@@ -17,7 +17,7 @@ class NetworkManager: NSObject {
     
     
     func getCities(cityName: String, completed: @escaping (Result<[City], APError>) -> Void) {
-        guard let url = URL(string: geocodingURL + "?q=\(cityName)&appid=\(appId)") else {
+        guard let url = URL(string: geocodingURL + "?q=\(cityName)&limit=5&appid=\(appId)") else {
             completed(.failure(.invalidURL))
             return
         }
@@ -41,8 +41,8 @@ class NetworkManager: NSObject {
             
             do {
                 let decoder = JSONDecoder()
-                let decodedResponse = try decoder.decode(CityResponse.self, from: data)
-                completed(.success(decodedResponse.cities))
+                let decodedResponse = try decoder.decode([City].self, from: data)
+                completed(.success(decodedResponse))
             } catch {
                 completed(.failure(.invalidData))
             }

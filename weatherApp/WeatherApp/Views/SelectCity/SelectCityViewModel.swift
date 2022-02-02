@@ -14,7 +14,7 @@ final class SelectCityViewModel : ObservableObject {
     
     func getCities(cityName: String) {
         
-        NetworkManager.shared.getCities(cityName: cityName) { result in
+        NetworkManager.shared.getCities(cityName: cityName) { [self] result in
             DispatchQueue.main.async {
                 
                 switch result {

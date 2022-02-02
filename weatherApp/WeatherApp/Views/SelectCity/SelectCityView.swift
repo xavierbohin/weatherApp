@@ -10,7 +10,7 @@ import SwiftUI
 struct SelectCityView: View {
     
     @State private var cityName: String = ""
-    @State private var viewModel = SelectCityViewModel()
+    @StateObject private var viewModel = SelectCityViewModel()
     
     var body: some View {
         VStack() {
@@ -21,12 +21,16 @@ struct SelectCityView: View {
                 .onChange(of: cityName) {
                     viewModel.getCities(cityName: $0)
                 }
-            
-            VStack() {
+                .padding(.leading)
+                .padding(.bottom)
+                        
+            VStack(spacing: 30) {
                 ForEach(viewModel.cities){ city in
-                    Text(city.name)
+                    Text(city.name + ", \(city.country), (\(city.lat), \(city.lon))")
                 }
             }
+            
+            Spacer()
             
         }
     }
