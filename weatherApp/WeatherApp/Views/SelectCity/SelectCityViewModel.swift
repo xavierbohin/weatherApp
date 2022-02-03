@@ -24,16 +24,16 @@ final class SelectCityViewModel : ObservableObject {
                 case .failure(let error):
                     switch error {
                     case .invalidData :
-                        print("invalidData")
+                        print(error)
                         
                     case .invalidResponse :
-                        print("invalidResponse")
+                        print(error)
                         
                     case .invalidURL :
-                        print("invalidURL")
+                        print(error)
                         
                     case .unableToComplete :
-                        print("unableToComplete")
+                        print(error)
                     }
                 }
             }

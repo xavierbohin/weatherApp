@@ -22,6 +22,15 @@ struct WeatherPageView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             .padding()
+            
+            switch selectedMode {
+            case .current:
+                WeatherCurrentView(data: viewModel.weatherData)
+            case .forecast:
+                WeatherForecastView(data: viewModel.weatherData)
+            }
+            
+            Spacer()
         }
         .navigationTitle(city.name)
         .navigationBarTitleDisplayMode(.inline)
