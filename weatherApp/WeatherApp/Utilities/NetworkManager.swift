@@ -21,7 +21,13 @@ class NetworkManager: NSObject {
     
     
     func getCities(cityName: String, completed: @escaping (Result<[City], APError>) -> Void) {
-        guard let url = URL(string: geocodingURL + "?q=\(cityName)&limit=5&appid=\(appId)") else {
+        let queryItems = [URLQueryItem(name: "q", value: cityName),
+                          URLQueryItem(name: "limit", value: "5"),
+                          URLQueryItem(name: "appid", value: appId)]
+        var urlComps = URLComponents(string: geocodingURL)
+        urlComps?.queryItems = queryItems
+        
+        guard let url = urlComps?.url else {
             completed(.failure(.invalidURL))
             return
         }
