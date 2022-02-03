@@ -11,7 +11,7 @@ struct WeatherPageView: View {
     
     var city: City
     @State private var selectedMode : weatherMode = .current
-    @State private var viewModel = WeatherPageViewModel()
+    @StateObject private var viewModel = WeatherPageViewModel()
     
     var body: some View {
         VStack() {
