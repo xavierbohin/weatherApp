@@ -34,7 +34,6 @@ final class SelectCityViewModel : ObservableObject {
                         
                     case .unableToComplete :
                         print("unableToComplete")
-                        
                     }
                 }
             }
