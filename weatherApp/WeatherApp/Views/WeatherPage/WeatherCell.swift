@@ -12,7 +12,7 @@ struct WeatherCell: View {
     var daily: WeatherData.Daily
     
     var body: some View {
-        VStack(alignment: .center) {
+        VStack() {
             Text(Date(timeIntervalSince1970: daily.dt).getString(format: "EE"))
             WeatherRemoteImage(iconString: daily.weather.first?.icon ?? "10d")
                 .aspectRatio(contentMode: .fit)

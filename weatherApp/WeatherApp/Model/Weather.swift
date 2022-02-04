@@ -18,31 +18,31 @@ struct WeatherData: Decodable {
         let wind_deg : Double
         
         struct Weather: Decodable {
-            var description : String
-            var icon : String
+            let description : String
+            let icon : String
         }
 
-        var weather : [Weather]
+        let weather : [Weather]
     }
     
     struct Daily: Decodable {
-        var dt : TimeInterval
+        let dt : TimeInterval
         
         struct Temp: Decodable {
-            var min : Double
-            var max : Double
+            let min : Double
+            let max : Double
         }
         
         struct Weather: Decodable {
-            var icon : String
+            let icon : String
         }
         
-        var temp : Temp
-        var weather : [Weather]
+        let temp : Temp
+        let weather : [Weather]
     }
     
-    var current : Current
-    var daily : [Daily]
+    let current : Current
+    let daily : [Daily]
 }
 
 extension WeatherData.Daily : Identifiable {
@@ -51,9 +51,6 @@ extension WeatherData.Daily : Identifiable {
 
 extension MockData {
     
-    static let weathers = [ WeatherData.Current.Weather(description: "rain", icon: "10d") ]
-    static let dailies = [ WeatherData.Daily(dt: 1618308000, temp: WeatherData.Daily.Temp(min: 275.09, max: 284.07), weather: [ WeatherData.Daily.Weather(icon: "10d") ])]
-    
-    static let sampleWeatherData = WeatherData(current: WeatherData.Current(dt: 1618317040, temp: 284.0, feels_like: 282.0, humidity: 62.0, wind_speed: 6.0, wind_deg: 300.0, weather: weathers), daily: dailies)
+    static let sampleWeatherData = WeatherData(current: WeatherData.Current(dt: 1618317040, temp: 284.0, feels_like: 282.0, humidity: 62.0, wind_speed: 6.0, wind_deg: 300.0, weather: [ WeatherData.Current.Weather(description: "rain", icon: "10d") ]), daily: [ WeatherData.Daily(dt: 1618308000, temp: WeatherData.Daily.Temp(min: 275.09, max: 284.07), weather: [ WeatherData.Daily.Weather(icon: "10d") ])])
     
 }

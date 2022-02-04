@@ -7,7 +7,7 @@
 
 import Foundation
 
-class WeatherPageViewModel: ObservableObject {
+final class WeatherPageViewModel: ObservableObject {
     
     @Published var weatherData : WeatherData?
     

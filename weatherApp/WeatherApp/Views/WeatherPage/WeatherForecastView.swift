@@ -12,7 +12,6 @@ struct WeatherForecastView: View {
     var data : WeatherData?
     
     var body: some View {
-        
         if let data = data {
             List(data.daily) { daily in
                 HStack() {
@@ -24,8 +23,6 @@ struct WeatherForecastView: View {
         } else {
             LoadingView()
         }
-        
-        
     }
 }
 
