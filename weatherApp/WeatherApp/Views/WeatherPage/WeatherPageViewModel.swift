@@ -10,6 +10,7 @@ import Foundation
 final class WeatherPageViewModel: ObservableObject {
     
     @Published var weatherData : WeatherData?
+    @Published var alertItem : AlertItem?
     
     func getWeather(lat: Double, lon: Double) {
         NetworkManager.shared.getWeather(lat: lat, lon: lon) { [self] result in
@@ -18,19 +19,20 @@ final class WeatherPageViewModel: ObservableObject {
                 switch result {
                 case .success(let weatherData):
                     self.weatherData = weatherData
+                    
                 case .failure(let error):
                     switch error {
                     case .invalidData :
-                        print(error)
+                        self.alertItem = AlertContext.invalidData
                         
                     case .invalidResponse :
-                        print(error)
+                        self.alertItem = AlertContext.invalidResponse
                         
                     case .invalidURL :
-                        print(error)
+                        self.alertItem = AlertContext.invalidURL
                         
                     case .unableToComplete :
-                        print(error)
+                        self.alertItem = AlertContext.unableToComplete
                     }
                 }
                 

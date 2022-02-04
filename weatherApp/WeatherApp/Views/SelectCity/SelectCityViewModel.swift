@@ -10,9 +10,13 @@ import Foundation
 final class SelectCityViewModel : ObservableObject {
     
     @Published var cities : [City] = []
-    
+    @Published var alertItem : AlertItem?
     
     func getCities(cityName: String) {
+        
+        guard cityName.count>0 else {
+            return
+        }
         
         NetworkManager.shared.getCities(cityName: cityName) { [self] result in
             DispatchQueue.main.async {
@@ -24,16 +28,16 @@ final class SelectCityViewModel : ObservableObject {
                 case .failure(let error):
                     switch error {
                     case .invalidData :
-                        print(error)
-                        
+                        self.alertItem = AlertContext.invalidData
+
                     case .invalidResponse :
-                        print(error)
-                        
+                        self.alertItem = AlertContext.invalidResponse
+
                     case .invalidURL :
-                        print(error)
-                        
+                        self.alertItem = AlertContext.invalidURL
+
                     case .unableToComplete :
-                        print(error)
+                        self.alertItem = AlertContext.unableToComplete
                     }
                 }
             }

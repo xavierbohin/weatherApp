@@ -14,28 +14,33 @@ struct WeatherPageView: View {
     @StateObject private var viewModel = WeatherPageViewModel()
     
     var body: some View {
-        VStack() {
-            Picker("choose mode", selection: $selectedMode) {
-                ForEach(weatherMode.allCases, id: \.self) {
-                    Text($0.rawValue)
+        ZStack {
+            VStack() {
+                Picker("choose mode", selection: $selectedMode) {
+                    ForEach(weatherMode.allCases, id: \.self) {
+                        Text($0.rawValue)
+                    }
                 }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+                
+                switch selectedMode {
+                case .current:
+                    WeatherCurrentView(data: viewModel.weatherData)
+                case .forecast:
+                    WeatherForecastView(data: viewModel.weatherData)
+                }
+                
+                Spacer()
             }
-            .pickerStyle(SegmentedPickerStyle())
-            .padding()
-            
-            switch selectedMode {
-            case .current:
-                WeatherCurrentView(data: viewModel.weatherData)
-            case .forecast:
-                WeatherForecastView(data: viewModel.weatherData)
+            .navigationTitle(city.name)
+            .navigationBarTitleDisplayMode(.inline)
+            .onAppear() {
+                viewModel.getWeather(lat: city.lat , lon: city.lon)
             }
-            
-            Spacer()
         }
-        .navigationTitle(city.name)
-        .navigationBarTitleDisplayMode(.inline)
-        .onAppear() {
-            viewModel.getWeather(lat: city.lat , lon: city.lon)
+        .alert(item: $viewModel.alertItem) { alertItem in
+            Alert(title: alertItem.title, message: alertItem.message, dismissButton: alertItem.dismissButton)
         }
         
     }
