@@ -1,0 +1,36 @@
+/* 
+  Localizable.strings
+  WeatherApp
+
+  Created by xavier bohin on 04/02/2022.
+  
+*/
+
+"locale" = "fr";
+
+//MARK: -  SelectCityView
+"Enter city name" = "Saisir une ville";
+"Search" = "Rechercher";
+
+//MARK: -  WeatherPageView
+"Current" = "Actuellement";
+"Forecast" = "Prévision";
+
+//MARK: - WeatherCurrentView
+"temperature : " = "température : ";
+"feels like : " = "ressenti : ";
+"humidity : " = "humidité : ";
+"wind speed : " = "vitesse du vent : ";
+"direction : " = "direction : ";
+
+//MARK: - WeatherCell
+"min temperature : " = "température min : ";
+"max temperature : " = "température max : ";
+
+//MARK: - AlertItem
+"Server Error" = "Erreur Serveur";
+"Ok" = "Ok";
+"There is an error trying to reach the server. If this persists, please contact support." = "Une erreur s'est produite lors de la tentative d'accès au serveur. Si cela persiste, veuillez contacter le support.";
+"Unable to complete your request at this time. Please check your internet connection." = "Impossible de traiter votre demande pour le moment. S'il vous plait, vérifiez votre connexion internet.";
+"Invalid response from the server. Please try again or contact support." = "Réponse invalide du serveur. Veuillez réessayer ou contacter l'assistance.";
+"The data received from the server was invalid. Please try again or contact support." = "Les données reçues du serveur étaient invalides. Veuillez réessayer ou contacter l'assistance.";

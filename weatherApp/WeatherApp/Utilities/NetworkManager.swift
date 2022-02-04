@@ -18,6 +18,7 @@ class NetworkManager: NSObject {
     private let geocodingURL      = baseURL + "geo/1.0/direct"
     private let oneCallWeatherURL = baseURL + "data/2.5/onecall"
     private let appId             = "c17fbdee7b939702febc77d39197d75a"
+    private let locale            = "locale".localized()
     
     
     func getCities(cityName: String, completed: @escaping (Result<[City], APError>) -> Void) {
@@ -63,7 +64,7 @@ class NetworkManager: NSObject {
     
     
     func getWeather(lat: Double, lon: Double, completed: @escaping (Result<WeatherData, APError>) -> Void) {
-        guard let url = URL(string: oneCallWeatherURL + "?lat=\(lat)&lon=\(lon)&appid=\(appId)") else {
+        guard let url = URL(string: oneCallWeatherURL + "?lat=\(lat)&lon=\(lon)&appid=\(appId)&lang=" + locale) else {
             completed(.failure(.invalidURL))
             return
         }

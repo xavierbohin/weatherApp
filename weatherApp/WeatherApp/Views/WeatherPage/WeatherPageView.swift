@@ -18,7 +18,7 @@ struct WeatherPageView: View {
             VStack() {
                 Picker("choose mode", selection: $selectedMode) {
                     ForEach(weatherMode.allCases, id: \.self) {
-                        Text($0.rawValue)
+                        Text($0.rawValue.localized())
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())

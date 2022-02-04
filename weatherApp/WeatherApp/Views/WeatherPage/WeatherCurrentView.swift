@@ -21,10 +21,10 @@ struct WeatherCurrentView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 120, height: 90)
                     .cornerRadius(8)
-                Text("temperature : \(Int(data.current.temp)) k")
-                Text("feels like : \(Int(data.current.feels_like)) k")
-                Text("humidity : \(Int(data.current.humidity)) %")
-                Text("wind speed : \(Int(data.current.wind_speed)) m/s. direction : \(Int(data.current.wind_deg)) °")
+                Text("temperature : ".localized() + "\(Int(data.current.temp)) k")
+                Text("feels like : ".localized() + "\(Int(data.current.feels_like)) k")
+                Text("humidity : ".localized() + "\(Int(data.current.humidity)) %")
+                Text("wind speed : ".localized() + "\(Int(data.current.wind_speed)) m/s." + "direction : ".localized() + "\(Int(data.current.wind_deg)) °")
             }
         } else {
             LoadingView()

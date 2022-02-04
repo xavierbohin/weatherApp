@@ -18,8 +18,8 @@ struct WeatherCell: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 120, height: 90)
                 .cornerRadius(8)
-            Text("min temperature: \(Int(daily.temp.min)) k")
-            Text("max temperature: \(Int(daily.temp.max)) k")
+            Text("min temperature : ".localized() + "\(Int(daily.temp.min)) k")
+            Text("max temperature : ".localized() + "\(Int(daily.temp.max)) k")
         }
     }
 }

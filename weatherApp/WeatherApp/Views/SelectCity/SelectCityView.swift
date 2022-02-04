@@ -18,7 +18,7 @@ struct SelectCityView: View {
                 VStack() {
                     Text("Enter city name")
                     
-                    TextField("Search", text: $cityName)
+                    TextField("Search".localized(), text: $cityName)
                         .padding(7)
                         .background(Color(UIColor.lightGray))
                         .cornerRadius(5)
